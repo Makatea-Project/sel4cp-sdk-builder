@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+SOURCE_DIR="$(dirname "$0")"
+SEL4CP_DIR="$SOURCE_DIR"/../../sel4cp
+DOCKER_IMAGE_NAME=makatea-project/sel4cp-sdk-builder
+set -x
+cp -f "$SEL4CP_DIR"/requirements.txt "$SOURCE_DIR"
+exec docker build --pull -t "$DOCKER_IMAGE_NAME" "$SOURCE_DIR"

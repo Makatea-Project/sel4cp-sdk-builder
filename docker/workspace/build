@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+exec docker build                               \
+        --build-arg USER_NAME="$(id -un)"       \
+        --build-arg USER_UID="$(id -ur)"        \
+        --build-arg USER_GID="$(id -gr)"        \
+        -t sel4cp-workspace                     \
+        "$(dirname "$0")"
