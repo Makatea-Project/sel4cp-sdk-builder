@@ -1,0 +1,60 @@
+#!/bin/sh
+set -eu
+
+usage() {
+    me=$(basename "$0")
+    cat >&2 <<-EOF
+	Usage: $me docker
+	       $me sdk [[board] ...]
+	       $me example <board> <example>
+	       $me clean
+	EOF
+	exit 1
+}
+
+# Command line check.
+[ $# -ge 1 ] || usage "$0"
+case "$1" in
+    "docker")
+	[ $# -eq 1 ] || usage "$0"
+        ./docker/base/build
+        ./docker/workspace/build
+        exit 0
+        ;;
+
+    "sdk")
+	command="python ./build_sdk.py --sel4 ../seL4"
+	if [ $# -gt 1 ]; then
+	    boards=$(echo "$@" | sed -E 's/[ \t]+/,/g' | cut -d, -f2-)
+	    command="$command --filter-boards $boards"
+	fi
+	;;
+
+    "example")
+	[ $# -eq 3 ] || usage "$0"
+	command="python ./dev_build.py --rebuild --board $2 --example $3"
+	;;
+
+
+    "clean")
+	[ $# -eq 1 ] || usage "$0"
+	command="git clean -fdx"
+	;;
+
+    *)
+	usage "$0"
+	;;
+esac
+
+
+# Re-run in the workspace docker container.
+if ! [ -e /.dockerenv ]; then
+	set -x
+	exec ./docker/workspace/run "$0" "$@"
+fi
+
+# Call the appropriate script.
+cd sel4cp
+set -x
+# shellcheck disable=SC2086
+exec $command
