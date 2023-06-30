@@ -69,5 +69,6 @@ it is redirected to the console.
 ```sh
 $ ./build docker
 $ ./build sdk x86_64_virt
+$ ./build example x86_64_virt hello
 $ ./sel4cp/example/x86_64_virt/sim ./sel4cp/tmp_build/loader.img
 ```
