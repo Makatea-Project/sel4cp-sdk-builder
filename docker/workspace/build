@@ -4,5 +4,5 @@ exec docker build                               \
         --build-arg USER_NAME="$(id -un)"       \
         --build-arg USER_UID="$(id -ur)"        \
         --build-arg USER_GID="$(id -gr)"        \
-        -t sel4cp-workspace                     \
+        -t microkit-workspace                   \
         "$(dirname "$0")"

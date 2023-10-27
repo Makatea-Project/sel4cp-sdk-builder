@@ -6,5 +6,5 @@ exec docker run  -it --rm                                       \
                  --volume "$topdir"/.cache:"$HOME"/.cache       \
                  --volume "$topdir":"$topdir"                   \
                  --workdir "$(pwd)"                             \
-                 sel4cp-workspace                               \
+                 microkit-workspace                             \
                  "$@"

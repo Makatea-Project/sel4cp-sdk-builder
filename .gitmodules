@@ -1,8 +1,8 @@
 [submodule "seL4"]
 	path = seL4
 	url = ../seL4.git
-	branch = sel4cp-x86
-[submodule "sel4cp"]
-	path = sel4cp
+	branch = microkit-x86
+[submodule "microkit"]
+	path = microkit
 	url = ../sel4cp.git
-	branch = x86
+	branch = microkit-x86

@@ -54,7 +54,7 @@ if ! [ -e /.dockerenv ]; then
 fi
 
 # Call the appropriate script.
-cd sel4cp
+cd microkit
 set -x
 # shellcheck disable=SC2086
 exec $command

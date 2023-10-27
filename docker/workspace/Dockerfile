@@ -1,9 +1,9 @@
 ##
-## Development environment to build the seL4cp SDK on a workstation.
+## Development environment to build the microkit SDK on a workstation.
 ##
 
 # Extend the base image. Make sure that you have already built it.
-FROM makatea-project/sel4cp-sdk-builder
+FROM makatea-project/microkit-sdk-builder
 
 # These args should come from the command line, but these should be
 # relatively sane defaults.

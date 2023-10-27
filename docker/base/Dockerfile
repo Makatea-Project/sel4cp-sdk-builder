@@ -1,5 +1,5 @@
 ##
-## Docker image ready to build the sel4cp SDK for all supported
+## Docker image ready to build the microkit SDK for all supported
 ## targets and boards.
 ##
 
